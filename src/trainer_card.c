@@ -1906,7 +1906,12 @@ static void CreateTrainerCardTrainerPic(void)
     }
     else
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]),
+        enum TrainerPicID picId = FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]);
+
+        // Astoria: the male FRLG player is Kani, not Red.
+        if (sData->cardType == CARD_TYPE_FRLG && sData->trainerCard.gender == MALE)
+            picId = TRAINER_PIC_KANI;
+        CreateTrainerCardTrainerPicSprite(picId,
                     TRUE,
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],
