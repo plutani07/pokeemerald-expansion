@@ -37,6 +37,9 @@ static void Task_AstoriaNewGame(u8 taskId)
 
 void StartAstoriaNewGame(void)
 {
+    // Normally rolled when the naming screen is confirmed; we skip that screen,
+    // so roll it here or every save gets Trainer ID 00000.
+    SeedRngAndSetTrainerId();
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     CreateTask(Task_AstoriaNewGame, 0);
     SetMainCallback2(CB2_AstoriaNewGame);
