@@ -1188,9 +1188,9 @@
 #define FLAG_HIDDEN_ITEM_SSANNE_EXTERIOR_LAVA_COOKIE                       (FLAG_HIDDEN_ITEMS_START + 190)
 
 // Unused hidden item flags
-#define FLAG_UNUSED_0x4A7               0x4A7 // Unused Flag
-#define FLAG_UNUSED_0x4A8               0x4A8 // Unused Flag
-#define FLAG_UNUSED_0x4A9               0x4A9 // Unused Flag
+#define FLAG_HIDE_PALLET_PLAYERS_HOUSE_MOM 0x4A7 // Astoria: Kani lives alone (set at new game)
+#define FLAG_ASTORIA_GOT_WASABI         0x4A8 // Astoria: test NPC gave Wasabi
+#define FLAG_ASTORIA_GOT_TEST_MONEY     0x4A9 // Astoria: test NPC gave money
 #define FLAG_UNUSED_0x4AA               0x4AA // Unused Flag
 #define FLAG_UNUSED_0x4AB               0x4AB // Unused Flag
 #define FLAG_UNUSED_0x4AC               0x4AC // Unused Flag

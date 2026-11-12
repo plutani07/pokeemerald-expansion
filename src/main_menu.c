@@ -19,6 +19,7 @@
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
 #include "oak_speech.h"
+#include "astoria.h"
 #include "option_menu.h"
 #include "overworld.h"
 #include "palette.h"
@@ -1085,7 +1086,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                     sCurrItemAndOptionMenuCheck = 0;
                 else
                     sCurrItemAndOptionMenuCheck |= OPTION_MENU_FLAG;  // entering the options menu
-                StartNewGameSceneFrlg();
+                StartAstoriaNewGame(); // Astoria: skip Oak speech, start as Kani
                 return;
             }
 

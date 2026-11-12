@@ -90,3 +90,96 @@ PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad::
 
 PalletTown_PlayersHouse_1F_Text_OopsWrongSide::
 	.string "Oops, wrong side…$"
+
+@ ---------------------------------------------------------------
+@ Astoria first-build test NPCs (placeholder dialogue, replace later)
+@ ---------------------------------------------------------------
+
+PalletTown_PlayersHouse_1F_EventScript_AstoriaTestWasabi::
+	lock
+	faceplayer
+	goto_if_set FLAG_ASTORIA_GOT_WASABI, PalletTown_PlayersHouse_1F_EventScript_AstoriaTestWasabiAfter
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestWasabiIntro, MSGBOX_DEFAULT
+	givemon SPECIES_BULBASAUR, 5
+	goto_if_eq VAR_RESULT, MON_CANT_GIVE, PalletTown_PlayersHouse_1F_EventScript_AstoriaTestWasabiNoRoom
+	callnative Astoria_NicknameWasabi
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
+	message PalletTown_PlayersHouse_1F_Text_AstoriaTestReceivedWasabi
+	waitmessage
+	waitfanfare
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_ASTORIA_GOT_WASABI
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestWasabiAfter, MSGBOX_DEFAULT
+	release
+	end
+
+PalletTown_PlayersHouse_1F_EventScript_AstoriaTestWasabiAfter::
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestWasabiAfter, MSGBOX_DEFAULT
+	release
+	end
+
+PalletTown_PlayersHouse_1F_EventScript_AstoriaTestWasabiNoRoom::
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestNoRoom, MSGBOX_DEFAULT
+	release
+	end
+
+PalletTown_PlayersHouse_1F_EventScript_AstoriaTestMoney::
+	lock
+	faceplayer
+	goto_if_set FLAG_ASTORIA_GOT_TEST_MONEY, PalletTown_PlayersHouse_1F_EventScript_AstoriaTestMoneyAfter
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestMoneyIntro, MSGBOX_DEFAULT
+	addmoney 1500000
+	showmoneybox 0, 0
+	playse SE_SHOP
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestReceivedMoney, MSGBOX_DEFAULT
+	hidemoneybox
+	setflag FLAG_ASTORIA_GOT_TEST_MONEY
+	release
+	end
+
+PalletTown_PlayersHouse_1F_EventScript_AstoriaTestMoneyAfter::
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestMoneyAfter, MSGBOX_DEFAULT
+	release
+	end
+
+PalletTown_PlayersHouse_1F_EventScript_AstoriaTestKid::
+	lock
+	faceplayer
+	msgbox PalletTown_PlayersHouse_1F_Text_AstoriaTestKid, MSGBOX_DEFAULT
+	release
+	end
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestWasabiIntro::
+	.string "TEST NPC: Hey, {PLAYER}!\n"
+	.string "This is test dialogue number one.\p"
+	.string "If you can read this, scripts work.\n"
+	.string "Here, take your partner.$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestReceivedWasabi::
+	.string "{PLAYER} received WASABI\n"
+	.string "the BULBASAUR!$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestWasabiAfter::
+	.string "TEST NPC: Check your party menu.\n"
+	.string "WASABI should be in there.$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestNoRoom::
+	.string "TEST NPC: Your party is full!$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestMoneyIntro::
+	.string "TEST NPC: Test dialogue number two.\p"
+	.string "This checks the new money cap.\n"
+	.string "Take ¥1,500,000.$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestReceivedMoney::
+	.string "{PLAYER} received ¥1,500,000!\p"
+	.string "The money box should show\n"
+	.string "seven digits.$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestMoneyAfter::
+	.string "TEST NPC: Open the TRAINER CARD to\n"
+	.string "check your money again.$"
+
+PalletTown_PlayersHouse_1F_Text_AstoriaTestKid::
+	.string "TEST NPC: Test dialogue number three!\n"
+	.string "I wander around. Walking works!$"
